@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="FAQ e suporte - Clash Royale Arcade Paradise" />
+<title>Suporte • Clash Royale Arcade Paradise</title>
+
+<!-- Fonte profissional -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-a: #02030a;
+  --bg-b: #000814;
+  --accent-a: #00c3ff;
+  --accent-b: #0077ff;
+  --glass: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.12);
+  --card-radius: 14px;
+  --max-width: 980px;
+}
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
+  -webkit-font-smoothing:antialiased;
+}
+body{
+  background: radial-gradient(circle at 18% 18%, #071025 0%, #000 45%);
+  color:#EAF6FF;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stars {
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+  background: radial-gradient(ellipse at bottom left, rgba(0,60,120,0.04), transparent 20%),
+              radial-gradient(ellipse at top right, rgba(0,20,60,0.03), transparent 20%);
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius:50%;
+  opacity: 0.85;
+  transform: translateZ(0);
+  filter: drop-shadow(0 0 4px rgba(0,195,255,0.08));
+  animation: twinkle linear infinite;
+}
+
+@keyframes twinkle {
+ 0% { opacity:0.85; transform: translateY(0) scale(1); }
+ 50% { opacity:0.25; transform: translateY(-10px) scale(0.9); }
+ 100% { opacity:0.85; transform: translateY(0) scale(1); }
+}
+
+.wrap{
+  position:relative;
+  z-index:1;
+  max-width:var(--max-width);
+  margin:48px auto;
+  padding:28px;
+}
+
+header{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  margin-bottom:18px;
+  text-align:center;
+}
+
+/* LOGO ATUALIZADA */
+.logo {
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  background:none;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border:2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5), 0 0 12px rgba(0,195,255,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6), 0 0 18px rgba(0,195,255,0.12);
+}
+.logo img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  display:block;
+}
+
+h1{
+  margin:6px 0 0 0;
+  font-weight:700;
+  font-size:1.9rem;
+  letter-spacing:0.4px;
+  color:#E7FBFF;
+  text-shadow: 0 0 18px rgba(0,195,255,0.08);
+}
+
+p.lead {
+  margin:8px 0 0 0;
+  opacity:0.85;
+  max-width:88%;
+}
+
+.card {
+  margin-top:20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:20px;
+  padding:20px;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6), 0 2px 8px rgba(0,150,255,0.03);
+  backdrop-filter: blur(6px) saturate(1.05);
+}
+
+.accordion {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:8px;
+}
+
+.acc-item {
+  border-radius: var(--card-radius);
+  overflow:hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.acc-trigger {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+  padding:14px 16px;
+  background: transparent;
+  border:none;
+  color:inherit;
+  text-align:left;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition: background .18s ease;
+}
+
+.acc-trigger:hover {
+  background: rgba(255,255,255,0.02);
+  transform: translateY(-4px);
+}
+
+.acc-trigger:focus {
+  outline: 3px solid rgba(0,195,255,0.12);
+}
+
+.acc-title { display:flex; gap:12px; align-items:center; }
+
+.acc-bullet {
+  min-width:36px;
+  min-height:36px;
+  border-radius:10px;
+  display:inline-grid;
+  place-items:center;
+  background: linear-gradient(90deg,var(--accent-a),var(--accent-b));
+  color:#002;
+  font-weight:700;
+  box-shadow: 0 6px 16px rgba(0,195,255,0.06);
+  font-size:0.9rem;
+}
+
+.acc-chevron {
+  width:34px;
+  height:34px;
+  border-radius:8px;
+  display:inline-grid;
+  place-items:center;
+  background: rgba(255,255,255,0.03);
+  transition: transform .28s ease;
+}
+
+.acc-body {
+  max-height:0;
+  overflow:hidden;
+  transition: max-height .45s cubic-bezier(.2,.9,.2,1), padding .25s ease;
+  padding: 0 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.006), rgba(0,0,0,0.01));
+}
+
+.acc-body .inner {
+  padding:12px 0 18px 0;
+  font-size:0.96rem;
+  line-height:1.6;
+  color:#E6F9FF;
+}
+
+.acc-item.open .acc-body {
+  max-height:600px;
+  padding:12px 16px 18px 16px;
+}
+
+.acc-item.open .acc-chevron {
+  transform: rotate(180deg);
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04));
+}
+
+a.cta {
+  display:inline-block;
+  margin-top:8px;
+  padding:10px 14px;
+  border-radius:10px;
+  background: linear-gradient(90deg,var(--accent-a),var(--accent-b));
+  color:#001;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow: 0 8px 24px rgba(0,195,255,0.08);
+}
+
+footer {
+  margin-top:18px;
+  text-align:center;
+  opacity:0.6;
+  font-size:0.9rem;
+}
+
+@media (max-width:720px){
+  :root{ --max-width:92vw; }
+  h1{ font-size:1.6rem; }
+  .logo{ width:90px; height:90px; }
+  .acc-trigger{ padding:12px; font-size:0.98rem; }
+  .acc-bullet{ min-width:34px; min-height:34px; font-size:0.86rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="starsLayer" aria-hidden="true"></div>
+
+<div class="wrap" role="main">
+
+<header>
+  <div class="logo" aria-hidden="true">
+    <img src="https://i.ibb.co/4nTyCFhk/image.png" alt="Logo Clash Royale Arcade Paradise" />
+  </div>
+  <h1>Suporte • Clash Royale Arcade Paradise</h1>
+  <p class="lead">Escolha um tópico para ver a resposta — toque ou clique na caixa.</p>
+</header>
+
+<section class="card">
+<div class="accordion">
+
+<!-- PERGUNTAS 1–12 (INTACTAS) -->
+
+<article class="acc-item" id="item-5">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-5')">
+    <div class="acc-title"><div class="acc-bullet">1</div><div>Como liberar todas as cartas?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Para desbloquear as cartas:<br>
+      <strong>1.</strong> Entre em um clã.<br>
+      <strong>2.</strong> Digite <code>/unlock</code><br>
+      <strong>3.</strong> Depois digite <code>/max</code><br><br>
+      Esses comandos liberam as cartas normalmente.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-6">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-6')">
+    <div class="acc-title"><div class="acc-bullet">2</div><div>Por que o jogo fica tanto tempo em “atualizando” na primeira vez?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Na primeira execução, o jogo prepara arquivos internos. Isso leva entre <strong>2 e 6 minutos</strong>.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-7">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-7')">
+    <div class="acc-title"><div class="acc-bullet">3</div><div>O jogo funciona em iPhone (iOS)?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Não funciona em iOS. Apenas Android é suportado.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-4">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-4')">
+    <div class="acc-title"><div class="acc-bullet">4</div><div>Meu celular é compatível com o jogo?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Compatibilidade depende de modelo e processador.<br>
+      Teste aqui:<br>
+      <a class="cta" href="https://spectrox-gg.github.io/SpectroX-Linck/Compatibilidade.html" target="_blank">Verificar compatibilidade</a>
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-1">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-1')">
+    <div class="acc-title"><div class="acc-bullet">5</div><div>O jogo é seguro? Ele tem vírus?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      <strong>Sim, é seguro.</strong> Baixe apenas pelos canais oficiais.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-2">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-2')">
+    <div class="acc-title"><div class="acc-bullet">6</div><div>Como baixar e instalar o jogo?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Baixe o APK oficial, permita fontes externas e instale. iOS não é compatível.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-3">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-3')">
+    <div class="acc-title"><div class="acc-bullet">7</div><div>O que fazer se o jogo ficar preso em 50%?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Use uma VPN temporariamente para concluir a inicialização.<br><br>
+
+      <strong>Baixe aqui a VPN recomendada:</strong><br>
+      <a class="cta" href="https://play.google.com/store/apps/details?id=app.jumpjumpvpn.jumpjumpvpn" target="_blank">
+        Baixar VPN na Play Store
+      </a>
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-8">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-8')">
+    <div class="acc-title"><div class="acc-bullet">8</div><div>Como jogar com amigos?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Não há pedidos de amizade. Ambos precisam estar no mesmo clã.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-9">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-9')">
+    <div class="acc-title"><div class="acc-bullet">9</div><div>Por que a primeira inicialização demora?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      O jogo baixa arquivos internos — leva de 2 a 5 minutos.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-10">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-10')">
+    <div class="acc-title"><div class="acc-bullet">10</div><div>O jogo recebe atualizações?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Sim. Novas cartas, modos, correções e melhorias serão lançados.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-11">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-11')">
+    <div class="acc-title"><div class="acc-bullet">11</div><div>O jogo é pago?</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      Não. O jogo é totalmente gratuito.
+  </div></div>
+</article>
+
+<article class="acc-item" id="item-12">
+  <button class="acc-trigger" aria-expanded="false" onclick="toggleAccordion(event, 'item-12')">
+    <div class="acc-title"><div class="acc-bullet">12</div><div>Dicas rápidas se o jogo travar</div></div>
+    <div class="acc-chevron">▾</div>
+  </button>
+  <div class="acc-body"><div class="inner">
+      - Reinicie o celular.<br>
+      - Feche apps em segundo plano.<br>
+      - Limpe cache ou reinstale.<br>
+      - Verifique espaço interno.<br>
+      - Persistindo o problema, envie prints no suporte.
+  </div></div>
+</article>
+
+</div>
+</section>
+
+<!-- TEXTO + BOTÃO DO DISCORD -->
+<div style="text-align:center; margin-top:28px;">
+  <p style="margin-bottom:10px; opacity:0.85;">
+    Entre no Discord oficial do jogo para receber atualizações em primeira mão!
+  </p>
+
+  <a class="cta" href="https://discord.gg/arcadeparadise25" target="_blank">
+    Entrar no Discord do Arcade Paradise
+  </a>
+</div>
+
+<footer>
+  © <span id="year"></span> Clash Royale Arcade Paradise — Suporte criado por SpectroX.
+  &nbsp; • &nbsp;
+  <a href="https://www.instagram.com/elinsberg_?igsh=Y2szcmR0MjJwY29u" target="_blank" style="color:var(--accent-a);text-decoration:none;">
+    Envie aqui sua dúvida
+  </a>
+</footer>
+
+</div>
+
+<script>
+/* ---------- Stars generation ---------- */
+(function createStars(){
+  const layer = document.getElementById('starsLayer');
+  if(!layer) return;
+  const count = Math.floor(window.innerWidth < 600 ? 60 : 140);
+  for(let i=0;i<count;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = (Math.random() * 2.2) + 0.8;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = (Math.random() * 100) + 'vw';
+    s.style.top = (Math.random() * 100) + 'vh';
+    const dur = (1.6 + Math.random() * 2.4).toFixed(2) + 's';
+    s.style.animationDuration = dur;
+    s.style.opacity = (0.6 + Math.random()*0.4).toFixed(2);
+    layer.appendChild(s);
+  }
+})();
+
+/* ---------- Accordion behaviour ---------- */
+function toggleAccordion(evt, id){
+  const item = document.getElementById(id);
+  const isOpen = item.classList.contains('open');
+
+  document.querySelectorAll('.acc-item.open').forEach(el=>{
+    if(el !== item){
+      el.classList.remove('open');
+      el.querySelector('.acc-trigger').setAttribute('aria-expanded','false');
+    }
+  });
+
+  if(isOpen){
+    item.classList.remove('open');
+    item.querySelector('.acc-trigger').setAttribute('aria-expanded','false');
+  } else {
+    item.classList.add('open');
+    item.querySelector('.acc-trigger').setAttribute('aria-expanded','true');
+    setTimeout(()=>{
+      const top = item.getBoundingClientRect().top + window.scrollY - 24;
+      window.scrollTo({ top, behavior:'smooth' });
+    },120);
+  }
+}
+
+/* ---------- Helpers ---------- */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Enter' || e.key === ' '){
+    const active = document.activeElement;
+    if(active && active.classList.contains('acc-trigger')){
+      e.preventDefault();
+      active.click();
+    }
+  }
+});
+</script>
+
+</body>
+</html>
