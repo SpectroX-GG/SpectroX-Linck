@@ -3,97 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SpectroX Compatibilidade</title>
+<title>SpectroX • Compatibilidade</title>
 
-<!-- Fonte bonita -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --accent-a: #00c3ff;
+  --accent-b: #0077ff;
+  --bg-dark: #02030a;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#0a0a0a;color:#fff;text-align:center;font-family:'Orbitron',sans-serif;overflow-x:hidden;}
-
-/* Estrelas */
-#starsMain{position:fixed;width:100%;height:100%;top:0;left:0;z-index:-1;background:#000;}
-.star{position:absolute;border-radius:50%;background:white;opacity:.8;animation:twinkle 2s infinite alternate;}
-@keyframes twinkle{0%{opacity:.2;}100%{opacity:1;}}
-
-/* Logo */
-.logo-container{width:140px;height:140px;margin:30px auto;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(255,255,255,0.4);}
-.logo-container img{width:80px;height:80px;border-radius:50%;filter:drop-shadow(0 0 12px #fff);}
-.logo-name{font-size:28px;text-shadow:0 0 12px #fff;margin-top:10px;}
-
-#homeBtn{position:fixed;top:20px;left:20px;padding:6px 12px;font-size:12px;font-weight:bold;background:rgba(255,255,255,0.1);color:#fff;border:2px solid #fff;border-radius:20px;cursor:pointer;z-index:1000;}
-
-#searchBox input{padding:8px;margin-top:20px;border-radius:8px;border:none;background:rgba(255,255,255,0.12);color:#fff;}
-#searchBox button{padding:8px 12px;border-radius:8px;border:none;background:rgba(255,255,255,0.2);color:#fff;cursor:pointer;}
-
-.notice, #installBox{
-  display:none;
-  opacity:0;
-  transition:.4s;
-  background:rgba(255,255,255,0.06);
-  border-left:6px solid #fff;
-  border-radius:12px;
-  padding:16px 20px;
-  max-width:550px;
-  margin:20px auto;
-}
-.notice.show, #installBox.show{display:block;opacity:1;}
-
-/* Lista */
-#compatList{list-style:none;max-width:550px;margin:25px auto;padding:0;display:flex;flex-direction:column;gap:10px;}
-#compatList li{background:rgba(255,255,255,0.05);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;font-size:16px;transition:.3s;}
-#compatList li:hover{transform:scale(1.03);box-shadow:0 0 12px rgba(255,255,255,0.3);}
-
-/* AVISO NÃO ENCONTRADO */
-.notFound{
-  display:none;
-  background:rgba(255,0,0,0.2);
-  border-left:6px solid #ff3d3d;
-  padding:16px;
-  max-width:550px;
-  margin:20px auto;
-  border-radius:12px;
-}
-
-/* BOTÃO ESTILO TIKTOK */
-.tiktok-btn{
-  font-family:'Poppins',sans-serif;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:10px 18px;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:600;
-  background:#000;
+body{
+  background: #000;
   color:#fff;
-  border:2px solid transparent;
-  cursor:pointer;
-  text-decoration:none;
-  position:relative;
-  overflow:hidden;
-  transition:.25s;
-}
-.tiktok-btn:hover{
-  transform:translateY(-3px) scale(1.03);
-  box-shadow:0 0 20px rgba(238,29,82,.5),0 0 20px rgba(105,201,208,.5);
+  text-align:center;
+  font-family:'Poppins', sans-serif;
+  overflow-x:hidden;
+  min-height: 100vh;
 }
 
-/* ✦ Destaque Neon Futurista */
-.highlight-result {
-  background: rgba(0, 255, 255, 0.15) !important;
-  border: 1px solid rgba(0, 255, 255, 0.45);
-  border-radius: 12px;
-  position: relative;
-  animation: neonPulse 1.8s ease-out forwards;
-  transform: scale(1.03);
+/* --- ESTRELAS --- */
+#starsMain{position:fixed;width:100%;height:100%;top:0;left:0;z-index:-1;background: radial-gradient(circle at 50% 10%, #071025 0%, #000 60%);}
+.star{position:absolute;border-radius:50%;background:white;opacity:.8;filter: drop-shadow(0 0 3px var(--accent-a));animation:twinkle 2s infinite alternate;}
+@keyframes twinkle{0%{opacity:.2;transform:scale(0.8);}100%{opacity:1;transform:scale(1);}}
+
+/* --- CABEÇALHO --- */
+.header-section { padding: 40px 20px; position: relative; z-index: 10; }
+.logo-container{
+  width:110px;height:110px;margin:0 auto 15px;
+  border-radius:50%;border: 2px solid var(--accent-a);
+  box-shadow: 0 0 25px rgba(0, 195, 255, 0.3);
+  overflow: hidden; transition: 0.4s;
 }
-@keyframes neonPulse {
-  0% { box-shadow: 0 0 4px #00eaff; }
-  100% { box-shadow: 0 0 14px #00eaff; }
+.logo-container img{width:100%;height:100%;object-fit: cover;}
+.logo-name{font-family: 'Orbitron', sans-serif; font-size:24px; letter-spacing: 2px; text-shadow:0 0 12px var(--accent-a);}
+
+#homeBtn{
+  position:fixed;top:20px;left:20px;padding:8px 16px;
+  background: rgba(255, 255, 255, 0.05); color:#fff;
+  border:1px solid var(--glass-border); border-radius:20px;
+  cursor:pointer; z-index:1000; backdrop-filter: blur(10px);
+  text-decoration: none; font-size: 14px;
+}
+
+/* --- BUSCA --- */
+.search-container { position: relative; z-index: 10; margin-bottom: 20px; padding: 0 10px; }
+#searchInput{
+  padding:14px 20px; width: 75%; max-width: 350px;
+  border-radius:12px; border: 1px solid var(--glass-border);
+  background: var(--glass); color:#fff; font-family: inherit;
+}
+#searchBtn{
+  padding:14px 20px; border-radius:12px; border:none;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  color:#001; cursor:pointer; font-weight: bold; margin-left: 5px;
+}
+
+/* --- BOXES DE INFORMAÇÃO --- */
+.notice, #installBox{
+  display:none; opacity:0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--glass-border); border-left:4px solid var(--accent-a);
+  border-radius:12px; padding:20px;
+  max-width:550px; margin:20px auto; backdrop-filter: blur(10px);
+}
+.notice.show, #installBox.show{display:block; opacity:1; animation: fadeIn 0.4s forwards;}
+
+@keyframes fadeIn { from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
+
+/* --- LISTA --- */
+#compatList{list-style:none;max-width:550px;margin:25px auto;padding:0 20px;display:flex;flex-direction:column;gap:12px; position: relative; z-index: 10;}
+#compatList li{
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius:12px; padding:14px 18px;
+  display:flex; justify-content:space-between; align-items: center;
+  transition:.3s;
+}
+.status { font-weight: bold; font-size: 1.2rem; }
+
+/* --- BOTÕES --- */
+.btn-premium {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:12px 20px; border-radius:14px;
+  font-weight:600; text-decoration:none; transition:.3s;
+  margin: 10px 5px; cursor: pointer; font-family: 'Poppins', sans-serif;
+}
+.btn-outline { border: 1px solid #fff; background: transparent; color: #fff; }
+.btn-tiktok { background: #000; color: #fff; border: 1px solid #fff; box-shadow: 2px 2px 0px #ff0050, -2px -2px 0px #00f2ea; }
+
+/* --- AVISO NÃO ENCONTRADO --- */
+.notFound {
+  display:none; background:rgba(255, 61, 61, 0.1); border: 1px solid #ff3d3d;
+  padding:20px; max-width:550px; margin:20px auto; border-radius:16px;
+  animation: fadeIn 0.4s forwards;
+}
+.notFound a {
+  color: var(--accent-a);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 195, 255, 0.4);
+  border-radius: 10px;
+  background: rgba(0, 195, 255, 0.1);
+  transition: 0.3s;
+}
+.notFound a:hover {
+  background: var(--accent-a);
+  color: #000;
+  box-shadow: 0 0 20px var(--accent-a);
+  transform: translateY(-2px);
+}
+
+.highlight-result {
+  background: rgba(0, 195, 255, 0.2) !important;
+  border-color: var(--accent-a) !important;
+  box-shadow: 0 0 20px rgba(0, 195, 255, 0.4);
+  transform: scale(1.03);
 }
 </style>
 </head>
@@ -101,65 +132,88 @@ body{background:#0a0a0a;color:#fff;text-align:center;font-family:'Orbitron',sans
 
 <div id="starsMain"></div>
 
-<div class="logo-container"><img src="https://i.ibb.co/4nTyCFhk/image.png"></div>
-<div class="logo-name">SpectroX</div>
+<a href="https://spectrox-gg.github.io/SpectroX-Linck/" id="homeBtn">🏠 Voltar</a>
 
-<button id="homeBtn" onclick="window.history.back()">🏠 Menu Inicial</button>
+<div class="header-section">
+  <div class="logo-container"><img src="https://i.ibb.co/4nTyCFhk/image.png"></div>
+  <div class="logo-name">SPECTROX</div>
+  <p style="opacity: 0.6; font-size: 0.9rem; margin-top: 10px;">Verificação de Compatibilidade Arcade Paradise</p>
+</div>
 
-<div id="searchBox">
-  <input type="text" id="searchInput" placeholder="Pesquisar celular...">
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Pesquisar modelo (Ex: A10, Poco X3...)">
   <button id="searchBtn">🔍</button>
 </div>
 
-<button id="toggleNotice" style="margin-top:10px;padding:10px 20px;border-radius:20px;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;">🧠 Sobre a compatibilidade</button>
-
-<button id="toggleInstall" class="tiktok-btn" style="margin-top:14px;">
-⚡ Instalar mesmo não compatível
-</button>
+<div>
+  <button id="toggleNotice" class="btn-premium btn-outline">🧠 Legenda</button>
+  <button id="toggleInstall" class="btn-premium btn-tiktok">⚡ Instalar se não for compatível</button>
+</div>
 
 <div id="noticeBox" class="notice">
-<p>✅ Compatível = Funciona normalmente</p>
-<p>⚠️ Parcial = Pode travar ou fechar</p>
-<p>❌ Incompatível = Não funciona</p>
-<p>Se seu modelo não estiver na lista, me chame no Instagram:</p>
-<p><a href="https://www.instagram.com/elinsberg_?igsh=Y2szcmR0MjJwY29u" target="_blank" style="color:#00e5ff;">@elinsberg_</a></p>
+  <p>✅ <b>Compatível</b>: Funciona perfeitamente.</p>
+  <p>⚠️ <b>Parcial</b>: Pode haver lag em algumas partidas.</p>
+  <p>❌ <b>Incompatível</b>: O jogo não suporta o hardware.</p>
+  <p style="margin-top:10px;">Dúvidas? <a href="https://www.instagram.com/elinsberg_?igsh=Y2szcmR0MjJwY29u" target="_blank" style="color:var(--accent-a);">Chame no Instagram</a></p>
 </div>
 
 <div id="installBox">
-  <p><strong>📥 Guia rápido:</strong></p><br>
-  <a class="tiktok-btn" href="https://vt.tiktok.com/ZSy4hgfHK/" target="_blank">📹 Vídeo tutorial</a><br><br>
-  <a class="tiktok-btn" href="https://play.google.com/store/apps/details?id=com.yoyo.snake.rush" target="_blank">📲 App usado</a>
+  <p><strong>📥 Método Alternativo (Snake Rush)</strong></p><br>
+  <a class="btn-premium btn-tiktok" href="https://vt.tiktok.com/ZSy4hgfHK/" target="_blank">📹 Ver Tutorial</a><br>
+  <a class="btn-premium btn-outline" href="https://play.google.com/store/apps/details?id=com.yoyo.snake.rush" target="_blank">📲 Baixar App Auxiliar</a>
 </div>
 
-<!-- 🔥 AVISO NÃO ENCONTRADO AGORA EM CIMA DA LISTA -->
 <div id="notFound" class="notFound">
-Celular não está na lista! Informe seu modelo no meu Instagram:<br><br>
-<a href="https://www.instagram.com/elinsberg_?igsh=Y2szcmR0MjJwY29u" target="_blank" style="color:#00e5ff;font-weight:bold;">
-@elinsberg_
-</a>
+  Modelo não encontrado na lista oficial!<br>
+  Informe seu modelo para o <b>SpectroX</b> no Instagram:<br>
+  <a href="https://www.instagram.com/elinsberg_?igsh=Y2szcmR0MjJwY29u" target="_blank">
+    🔗 @elinsberg_
+  </a>
 </div>
 
-<ul id="compatList"> <!-- PARTE 1: SAMSUNG GALAXY A SERIES --> <li>Samsung Galaxy A2 Core → <span class="status">⚠️</span></li> <li>Samsung Galaxy A10 → <span class="status">⚠️</span></li> <li>Samsung Galaxy A10e → <span class="status">⚠️</span></li> <li>Samsung Galaxy A10s → <span class="status">⚠️</span></li> <li>Samsung Galaxy A12 → <span class="status">✅</span></li> <li>Samsung Galaxy A13 → <span class="status">✅</span></li> <li>Samsung Galaxy A20 → <span class="status">⚠️</span></li> <li>Samsung Galaxy A20e → <span class="status">⚠️</span></li> <li>Samsung Galaxy A20s → <span class="status">⚠️</span></li> <li>Samsung Galaxy A30 → <span class="status">✅</span></li> <li>Samsung Galaxy A30s → <span class="status">✅</span></li> <li>Samsung Galaxy A32 → <span class="status">✅</span></li> <li>Samsung Galaxy A40 → <span class="status">✅</span></li> <li>Samsung Galaxy A40s → <span class="status">✅</span></li> <li>Samsung Galaxy A50 → <span class="status">⚠️</span></li> <li>Samsung Galaxy A50s → <span class="status">⚠️</span></li> <li>Samsung Galaxy A52 → <span class="status">✅</span></li> <li>Samsung Galaxy A52s → <span class="status">✅</span></li> <li>Samsung Galaxy A55 → <span class="status">❌️</span></li> <li>Samsung Galaxy A60 → <span class="status">✅</span></li> <li>Samsung Galaxy A70 → <span class="status">✅</span></li> <li>Samsung Galaxy A70s → <span class="status">✅</span></li> <li>Samsung Galaxy A72 → <span class="status">✅</span></li> <li>Samsung Galaxy A80 → <span class="status">✅</span></li> <li>Samsung Galaxy A90 5G → <span class="status">✅</span></li> <li>Samsung Galaxy A05 → <span class="status">⚠️</span></li> <li>Samsung Galaxy A05s → <span class="status">⚠️</span></li> <li>Samsung Galaxy A15 → <span class="status">✅</span></li> <li>Samsung Galaxy A25 → <span class="status">✅</span></li> <li>Samsung Galaxy A35 → <span class="status">✅</span></li> <!-- PARTE 2: SAMSUNG GALAXY S, Z E M SERIES --> <!-- Samsung Galaxy S Series --> <li>Samsung Galaxy S → <span class="status">❌</span></li> <li>Samsung Galaxy S II → <span class="status">❌</span></li> <li>Samsung Galaxy S III → <span class="status">❌</span></li> <li>Samsung Galaxy S4 → <span class="status">⚠️</span></li> <li>Samsung Galaxy S5 → <span class="status">⚠️</span></li> <li>Samsung Galaxy S6 → <span class="status">⚠️</span></li> <li>Samsung Galaxy S6 edge → <span class="status">⚠️</span></li> <li>Samsung Galaxy S7 → <span class="status">✅</span></li> <li>Samsung Galaxy S7 edge → <span class="status">✅</span></li> <li>Samsung Galaxy S8 → <span class="status">✅</span></li> <li>Samsung Galaxy S8+ → <span class="status">✅</span></li> <li>Samsung Galaxy S9 → <span class="status">✅</span></li> <li>Samsung Galaxy S9+ → <span class="status">✅</span></li> <li>Samsung Galaxy S10 → <span class="status">✅</span></li> <li>Samsung Galaxy S10e → <span class="status">✅</span></li> <li>Samsung Galaxy S10+ → <span class="status">✅</span></li> <li>Samsung Galaxy S11 → <span class="status">✅</span></li> <li>Samsung Galaxy S12 → <span class="status">✅</span></li> <li>Samsung Galaxy S12+ → <span class="status">✅</span></li> <li>Samsung Galaxy S12 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S20 → <span class="status">✅</span></li> <li>Samsung Galaxy S20+ → <span class="status">✅</span></li> <li>Samsung Galaxy S20 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S21 → <span class="status">✅</span></li> <li>Samsung Galaxy S21+ → <span class="status">✅</span></li> <li>Samsung Galaxy S21 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S22 → <span class="status">✅</span></li> <li>Samsung Galaxy S22+ → <span class="status">✅</span></li> <li>Samsung Galaxy S22 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S23 → <span class="status">✅</span></li> <li>Samsung Galaxy S23+ → <span class="status">✅</span></li> <li>Samsung Galaxy S23 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S24 → <span class="status">❌</span></li> <li>Samsung Galaxy S24+ → <span class="status">❌</span></li> <li>Samsung Galaxy S24 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S24 FE → <span class="status">❌</span></li> <li>Samsung Galaxy S21 FE → <span class="status">✅</span></li> <li>Samsung Galaxy S22 FE → <span class="status">✅</span></li> <li>Samsung Galaxy S23 FE → <span class="status">✅</span></li> <!-- Samsung Galaxy Z Series --> <li>Samsung Galaxy Z Flip → <span class="status">✅</span></li> <li>Samsung Galaxy Z Flip 3 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Flip 4 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Flip 5 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Flip 6 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold 2 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold 3 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold 4 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold 5 → <span class="status">✅</span></li> <!-- Samsung Galaxy M Series --> <li>Samsung Galaxy M10 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M11 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M12 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M20 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M21 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M30 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M31 → <span class="status">✅</span></li> <li>Samsung Galaxy M32 → <span class="status">✅</span></li> <li>Samsung Galaxy M33 → <span class="status">✅</span></li> <li>Samsung Galaxy M34 → <span class="status">✅</span></li> <li>Samsung Galaxy M51 → <span class="status">✅</span></li> <li>Samsung Galaxy M52 → <span class="status">✅</span></li> <li>Samsung Galaxy M54 → <span class="status">✅</span></li> <li>Samsung Galaxy M15 → <span class="status">✅</span></li> <li>Samsung Galaxy M35 → <span class="status">✅</span></li> <li>Samsung Galaxy M55 → <span class="status">✅</span></li> <li>Samsung Galaxy M14 → <span class="status">✅</span></li> <li>Samsung Galaxy M42 → <span class="status">✅</span></li> <li>Samsung Galaxy M44 → <span class="status">✅</span></li> <li>Samsung Galaxy M53 → <span class="status">✅</span></li> <!-- PARTE 3: XIAOMI / MI, POCO E REDMI SERIES --> <!-- Xiaomi / Mi Series --> <li>Xiaomi Mi 1 → <span class="status">❌</span></li> <li>Xiaomi Mi 2 → <span class="status">❌</span></li> <li>Xiaomi Mi 3 → <span class="status">❌</span></li> <li>Xiaomi Mi 4 → <span class="status">❌</span></li> <li>Xiaomi Mi 5 → <span class="status">⚠️</span></li> <li>Xiaomi Mi 6 → <span class="status">⚠️</span></li> <li>Xiaomi Mi 8 → <span class="status">✅</span></li> <li>Xiaomi Mi 9 → <span class="status">✅</span></li> <li>Xiaomi Mi 10 → <span class="status">✅</span></li> <li>Xiaomi Mi 11 → <span class="status">✅</span></li> <li>Xiaomi Mi 12 → <span class="status">✅</span></li> <li>Xiaomi Mi 13 → <span class="status">✅</span></li> <li>Xiaomi Mi 14 → <span class="status">✅</span></li> <li>Xiaomi Mi 14 Ultra → <span class="status">✅</span></li> <li>Xiaomi Mi 14 Pro → <span class="status">✅</span></li> <li>Xiaomi Mi 14T → <span class="status">✅</span></li> <li>Xiaomi Mi 14 Lite → <span class="status">✅</span></li> <li>Xiaomi Mi 15 → <span class="status">✅</span></li> <li>Xiaomi Mi Note 10 → <span class="status">✅</span></li> <li>Xiaomi Mi Note 11 → <span class="status">✅</span></li> <li>Xiaomi Mi 12T → <span class="status">✅</span></li> <li>Xiaomi Mi 13 Lite → <span class="status">✅</span></li> <li>Xiaomi Mix Fold → <span class="status">✅</span></li> <li>Xiaomi Mix Flip → <span class="status">✅</span></li> <!-- POCO Series --> <li>POCO F1 → <span class="status">⚠️</span></li> <li>POCO F2 Pro → <span class="status">✅</span></li> <li>POCO F3 → <span class="status">✅</span></li> <li>POCO F4 → <span class="status">✅</span></li> <li>POCO F5 → <span class="status">✅</span></li> <li>POCO F6 → <span class="status">✅</span></li> <li>POCO F6 Pro → <span class="status">✅</span></li> <li>POCO F7 → <span class="status">✅</span></li> <li>POCO F8 → <span class="status">✅</span></li> <li>POCO X3 NFC → <span class="status">✅</span></li> <li>POCO X3 Pro → <span class="status">✅</span></li> <li>POCO X4 Pro → <span class="status">✅</span></li> <li>POCO X5 → <span class="status">✅</span></li> <li>POCO X5 Pro → <span class="status">✅</span></li> <li>POCO X6 → <span class="status">✅</span></li> <li>POCO X6 Pro → <span class="status">❌️</span></li> <li>POCO X2 → <span class="status">✅</span></li> <li>POCO X7 → <span class="status">✅</span></li> <li>POCO M3 → <span class="status">⚠️</span></li> <li>POCO M4 Pro → <span class="status">✅</span></li> <li>POCO M5 → <span class="status">✅</span></li> <li>POCO M5 Pro → <span class="status">✅</span></li> <li>POCO M6 → <span class="status">✅</span></li> <li>POCO M6 Pro → <span class="status">✅</span></li> <li>POCO C40 → <span class="status">⚠️</span></li> <li>POCO C55 → <span class="status">⚠️</span></li> <li>POCO C65 → <span class="status">⚠️</span></li> <!-- Redmi Series --> <li>Redmi 9 → <span class="status">⚠️</span></li> <li>Redmi 10 → <span class="status">✅</span></li> <li>Redmi 12 → <span class="status">✅</span></li> <li>Redmi 13 → <span class="status">✅</span></li> <li>Redmi 14C → <span class="status">✅</span></li> <li>Redmi Note 7 → <span class="status">⚠️</span></li> <li>Redmi Note 8 → <span class="status">⚠️</span></li> <li>Redmi Note 9 → <span class="status">✅</span></li> <li>Redmi Note 10 → <span class="status">✅</span></li> <li>Redmi Note 11 → <span class="status">✅</span></li> <li>Redmi Note 11 Pro → <span class="status">✅</span></li> <li>Redmi Note 11 Pro 5G → <span class="status">✅</span></li> <li>Redmi Note 12 → <span class="status">✅</span></li> <li>Redmi Note 12 Pro → <span class="status">✅</span></li> <li>Redmi Note 12 Pro+ → <span class="status">✅</span></li> <li>Redmi Note 13 → <span class="status">✅</span></li> <li>Redmi Note 13 Pro → <span class="status">✅</span></li> <li>Redmi Note 13 Pro+ → <span class="status">✅</span></li> <li>Redmi Note 14 → <span class="status">✅</span></li> <li>Redmi Note 14 Pro → <span class="status">✅</span></li> <li>Redmi Note 14 Pro Plus → <span class="status">✅</span></li> <li>Redmi Note 15 → <span class="status">✅</span></li> <li>Redmi Note 15 Pro → <span class="status">✅</span></li> <li>Redmi Note 15 Pro Plus → <span class="status">✅</span></li> <li>Redmi 15 → <span class="status">✅</span></li> <li>Redmi 15C → <span class="status">✅</span></li> <!-- PARTE 4: MOTOROLA MOTO G, EDGE, RAZR, E SERIES E IPHONE --> <!-- MOTOROLA MOTO G SERIES --> <li>Motorola Moto G (1ª Geração) → <span class="status">❌</span></li> <li>Motorola Moto G (2ª Geração) → <span class="status">❌</span></li> <li>Motorola Moto G (3ª Geração) → <span class="status">⚠️</span></li> <li>Motorola Moto G4 → <span class="status">⚠️</span></li> <li>Motorola Moto G5 → <span class="status">⚠️</span></li> <li>Motorola Moto G6 → <span class="status">✅</span></li> <li>Motorola Moto G7 → <span class="status">✅</span></li> <li>Motorola Moto G8 → <span class="status">✅</span></li> <li>Motorola Moto G9 → <span class="status">✅</span></li> <li>Motorola Moto G04 → <span class="status">⚠️</span></li> <li>Motorola Moto G05 → <span class="status">⚠️</span></li> <li>Motorola Moto G15 → <span class="status">✅</span></li> <li>Motorola Moto G12 → <span class="status">✅</span></li> <li>Motorola Moto G13 → <span class="status">✅</span></li> <li>Motorola Moto G20 → <span class="status">✅</span></li> <li>Motorola Moto G21 → <span class="status">✅</span></li> <li>Motorola Moto G22 → <span class="status">✅</span></li> <li>Motorola Moto G31 → <span class="status">✅</span></li> <li>Motorola Moto G34 → <span class="status">✅</span></li> <li>Motorola Moto G35 → <span class="status">✅</span></li> <li>Motorola Moto G36 → <span class="status">✅</span></li> <li>Motorola Moto G41 → <span class="status">✅</span></li> <li>Motorola Moto G42 → <span class="status">✅</span></li> <li>Motorola Moto G51 → <span class="status">✅</span></li> <li>Motorola Moto G52 → <span class="status">✅</span></li> <li>Motorola Moto G53 → <span class="status">✅</span></li> <li>Motorola Moto G54 → <span class="status">✅</span></li> <li>Motorola Moto G56 → <span class="status">✅</span></li> <li>Motorola Moto G71 → <span class="status">✅</span></li> <li>Motorola Moto G73 → <span class="status">✅</span></li> <li>Motorola Moto G82 → <span class="status">✅</span></li> <li>Motorola Moto G84 → <span class="status">✅</span></li> <li>Motorola Moto G86 → <span class="status">✅</span></li> <li>Motorola Moto G100 → <span class="status">✅</span></li> <li>Motorola Moto G200 → <span class="status">✅</span></li> <!-- MOTOROLA EDGE SERIES --> <li>Motorola Edge → <span class="status">✅</span></li> <li>Motorola Edge Plus → <span class="status">✅</span></li> <li>Motorola Edge 20 Lite → <span class="status">✅</span></li> <li>Motorola Edge 20 → <span class="status">✅</span></li> <li>Motorola Edge 20 Pro → <span class="status">✅</span></li> <li>Motorola Edge 30 Neo → <span class="status">✅</span></li> <li>Motorola Edge 30 Fusion → <span class="status">✅</span></li> <li>Motorola Edge 30 → <span class="status">✅</span></li> <li>Motorola Edge 30 Pro → <span class="status">✅</span></li> <li>Motorola Edge 30 Ultra → <span class="status">✅</span></li> <li>Motorola Edge 40 Neo → <span class="status">✅</span></li> <li>Motorola Edge 40 → <span class="status">✅</span></li> <li>Motorola Edge 40 Pro → <span class="status">✅</span></li> <li>Motorola Edge 40 Ultra → <span class="status">✅</span></li> <li>Motorola Edge 50 Pro → <span class="status">✅</span></li> <li>Motorola Edge 50 Ultra → <span class="status">✅</span></li> <li>Motorola Edge 60 → <span class="status">✅</span></li> <li>Motorola Edge 60 Pro → <span class="status">✅</span></li> <li>Motorola Edge 70 → <span class="status">✅</span></li> <li>Motorola Edge 70 Pro → <span class="status">✅</span></li> <!-- MOTOROLA RAZR SERIES --> <li>Motorola Razr (2019) → <span class="status">⚠️</span></li> <li>Motorola Razr 5G (2020) → <span class="status">✅</span></li> <li>Motorola Razr 40 → <span class="status">✅</span></li> <li>Motorola Razr 40 Ultra → <span class="status">✅</span></li> <li>Motorola Razr 50 → <span class="status">✅</span></li> <li>Motorola Razr 50 Ultra → <span class="status">✅</span></li> <li>Motorola Razr 60 → <span class="status">✅</span></li> <li>Motorola Razr 60 Ultra → <span class="status">✅</span></li> <!-- MOTOROLA MOTO E SERIES --> <li>Motorola Moto E6 → <span class="status">⚠️</span></li> <li>Motorola Moto E7 → <span class="status">⚠️</span></li> <li>Motorola Moto E13 → <span class="status">✅</span></li> <li>Motorola Moto E20 → <span class="status">✅</span></li> <li>Motorola Moto E22 → <span class="status">✅</span></li> <li>Motorola Moto E22i → <span class="status">✅</span></li> <li>Motorola Moto E30 → <span class="status">✅</span></li> <li>Motorola Moto E32 → <span class="status">✅</span></li> <li>Motorola Moto E40 → <span class="status">✅</span></li> <!-- APPLE IPHONE SERIES --> <li>Todos os modelos de iPhone → <span class="status">❌</span></li>> </ul>
+<ul id="compatList"> <!-- PARTE 1: SAMSUNG GALAXY A SERIES --> <li>Samsung Galaxy A2 Core → <span class="status">⚠️</span></li> <li>Samsung Galaxy A10 → <span class="status">⚠️</span></li> <li>Samsung Galaxy A10e → <span class="status">⚠️</span></li> <li>Samsung Galaxy A10s → <span class="status">⚠️</span></li> <li>Samsung Galaxy A12 → <span class="status">✅</span></li> <li>Samsung Galaxy A13 → <span class="status">✅</span></li> <li>Samsung Galaxy A20 → <span class="status">⚠️</span></li> <li>Samsung Galaxy A20e → <span class="status">⚠️</span></li> <li>Samsung Galaxy A20s → <span class="status">⚠️</span></li> <li>Samsung Galaxy A30 → <span class="status">✅</span></li> <li>Samsung Galaxy A30s → <span class="status">✅</span></li> <li>Samsung Galaxy A32 → <span class="status">✅</span></li> <li>Samsung Galaxy A40 → <span class="status">✅</span></li> <li>Samsung Galaxy A40s → <span class="status">✅</span></li> <li>Samsung Galaxy A50 → <span class="status">⚠️</span></li> <li>Samsung Galaxy A50s → <span class="status">⚠️</span></li> <li>Samsung Galaxy A52 → <span class="status">✅</span></li> <li>Samsung Galaxy A52s → <span class="status">✅</span></li> <li>Samsung Galaxy A55 → <span class="status">❌️</span></li> <li>Samsung Galaxy A60 → <span class="status">✅</span></li> <li>Samsung Galaxy A70 → <span class="status">✅</span></li> <li>Samsung Galaxy A70s → <span class="status">✅</span></li> <li>Samsung Galaxy A72 → <span class="status">✅</span></li> <li>Samsung Galaxy A80 → <span class="status">✅</span></li> <li>Samsung Galaxy A90 5G → <span class="status">✅</span></li> <li>Samsung Galaxy A05 → <span class="status">⚠️</span></li> <li>Samsung Galaxy A05s → <span class="status">⚠️</span></li> <li>Samsung Galaxy A15 → <span class="status">✅</span></li> <li>Samsung Galaxy A25 → <span class="status">✅</span></li> <li>Samsung Galaxy A35 → <span class="status">✅</span></li> <!-- PARTE 2: SAMSUNG GALAXY S, Z E M SERIES --> <!-- Samsung Galaxy S Series --> <li>Samsung Galaxy S → <span class="status">❌</span></li> <li>Samsung Galaxy S II → <span class="status">❌</span></li> <li>Samsung Galaxy S III → <span class="status">❌</span></li> <li>Samsung Galaxy S4 → <span class="status">⚠️</span></li> <li>Samsung Galaxy S5 → <span class="status">⚠️</span></li> <li>Samsung Galaxy S6 → <span class="status">⚠️</span></li> <li>Samsung Galaxy S6 edge → <span class="status">⚠️</span></li> <li>Samsung Galaxy S7 → <span class="status">✅</span></li> <li>Samsung Galaxy S7 edge → <span class="status">✅</span></li> <li>Samsung Galaxy S8 → <span class="status">✅</span></li> <li>Samsung Galaxy S8+ → <span class="status">✅</span></li> <li>Samsung Galaxy S9 → <span class="status">✅</span></li> <li>Samsung Galaxy S9+ → <span class="status">✅</span></li> <li>Samsung Galaxy S10 → <span class="status">✅</span></li> <li>Samsung Galaxy S10e → <span class="status">✅</span></li> <li>Samsung Galaxy S10+ → <span class="status">✅</span></li> <li>Samsung Galaxy S11 → <span class="status">✅</span></li> <li>Samsung Galaxy S12 → <span class="status">✅</span></li> <li>Samsung Galaxy S12+ → <span class="status">✅</span></li> <li>Samsung Galaxy S12 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S20 → <span class="status">✅</span></li> <li>Samsung Galaxy S20+ → <span class="status">✅</span></li> <li>Samsung Galaxy S20 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S21 → <span class="status">✅</span></li> <li>Samsung Galaxy S21+ → <span class="status">✅</span></li> <li>Samsung Galaxy S21 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S22 → <span class="status">✅</span></li> <li>Samsung Galaxy S22+ → <span class="status">✅</span></li> <li>Samsung Galaxy S22 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S23 → <span class="status">✅</span></li> <li>Samsung Galaxy S23+ → <span class="status">✅</span></li> <li>Samsung Galaxy S23 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S24 → <span class="status">❌</span></li> <li>Samsung Galaxy S24+ → <span class="status">❌</span></li> <li>Samsung Galaxy S24 Ultra → <span class="status">✅</span></li> <li>Samsung Galaxy S24 FE → <span class="status">❌</span></li> <li>Samsung Galaxy S21 FE → <span class="status">✅</span></li> <li>Samsung Galaxy S22 FE → <span class="status">✅</span></li> <li>Samsung Galaxy S23 FE → <span class="status">✅</span></li> <!-- Samsung Galaxy Z Series --> <li>Samsung Galaxy Z Flip → <span class="status">✅</span></li> <li>Samsung Galaxy Z Flip 3 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Flip 4 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Flip 5 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Flip 6 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold 2 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold 3 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold 4 → <span class="status">✅</span></li> <li>Samsung Galaxy Z Fold 5 → <span class="status">✅</span></li> <!-- Samsung Galaxy M Series --> <li>Samsung Galaxy M10 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M11 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M12 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M20 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M21 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M30 → <span class="status">⚠️</span></li> <li>Samsung Galaxy M31 → <span class="status">✅</span></li> <li>Samsung Galaxy M32 → <span class="status">✅</span></li> <li>Samsung Galaxy M33 → <span class="status">✅</span></li> <li>Samsung Galaxy M34 → <span class="status">✅</span></li> <li>Samsung Galaxy M51 → <span class="status">✅</span></li> <li>Samsung Galaxy M52 → <span class="status">✅</span></li> <li>Samsung Galaxy M54 → <span class="status">✅</span></li> <li>Samsung Galaxy M15 → <span class="status">✅</span></li> <li>Samsung Galaxy M35 → <span class="status">✅</span></li> <li>Samsung Galaxy M55 → <span class="status">✅</span></li> <li>Samsung Galaxy M14 → <span class="status">✅</span></li> <li>Samsung Galaxy M42 → <span class="status">✅</span></li> <li>Samsung Galaxy M44 → <span class="status">✅</span></li> <li>Samsung Galaxy M53 → <span class="status">✅</span></li> <!-- PARTE 3: XIAOMI / MI, POCO E REDMI SERIES --> <!-- Xiaomi / Mi Series --> <li>Xiaomi Mi 1 → <span class="status">❌</span></li> <li>Xiaomi Mi 2 → <span class="status">❌</span></li> <li>Xiaomi Mi 3 → <span class="status">❌</span></li> <li>Xiaomi Mi 4 → <span class="status">❌</span></li> <li>Xiaomi Mi 5 → <span class="status">⚠️</span></li> <li>Xiaomi Mi 6 → <span class="status">⚠️</span></li> <li>Xiaomi Mi 8 → <span class="status">✅</span></li> <li>Xiaomi Mi 9 → <span class="status">✅</span></li> <li>Xiaomi Mi 10 → <span class="status">✅</span></li> <li>Xiaomi Mi 11 → <span class="status">✅</span></li> <li>Xiaomi Mi 12 → <span class="status">✅</span></li> <li>Xiaomi Mi 13 → <span class="status">✅</span></li> <li>Xiaomi Mi 14 → <span class="status">✅</span></li> <li>Xiaomi Mi 14 Ultra → <span class="status">✅</span></li> <li>Xiaomi Mi 14 Pro → <span class="status">✅</span></li> <li>Xiaomi Mi 14T → <span class="status">✅</span></li> <li>Xiaomi Mi 14 Lite → <span class="status">✅</span></li> <li>Xiaomi Mi 15 → <span class="status">✅</span></li> <li>Xiaomi Mi Note 10 → <span class="status">✅</span></li> <li>Xiaomi Mi Note 11 → <span class="status">✅</span></li> <li>Xiaomi Mi 12T → <span class="status">✅</span></li> <li>Xiaomi Mi 13 Lite → <span class="status">✅</span></li> <li>Xiaomi Mix Fold → <span class="status">✅</span></li> <li>Xiaomi Mix Flip → <span class="status">✅</span></li> <!-- POCO Series --> <li>POCO F1 → <span class="status">⚠️</span></li> <li>POCO F2 Pro → <span class="status">✅</span></li> <li>POCO F3 → <span class="status">✅</span></li> <li>POCO F4 → <span class="status">✅</span></li> <li>POCO F5 → <span class="status">✅</span></li> <li>POCO F6 → <span class="status">✅</span></li> <li>POCO F6 Pro → <span class="status">✅</span></li> <li>POCO F7 → <span class="status">✅</span></li> <li>POCO F8 → <span class="status">✅</span></li> <li>POCO X3 NFC → <span class="status">✅</span></li> <li>POCO X3 Pro → <span class="status">✅</span></li> <li>POCO X4 Pro → <span class="status">✅</span></li> <li>POCO X5 → <span class="status">✅</span></li> <li>POCO X5 Pro → <span class="status">✅</span></li> <li>POCO X6 → <span class="status">✅</span></li> <li>POCO X6 Pro → <span class="status">❌️</span></li> <li>POCO X2 → <span class="status">✅</span></li> <li>POCO X7 → <span class="status">✅</span></li> <li>POCO M3 → <span class="status">⚠️</span></li> <li>POCO M4 Pro → <span class="status">✅</span></li> <li>POCO M5 → <span class="status">✅</span></li> <li>POCO M5 Pro → <span class="status">✅</span></li> <li>POCO M6 → <span class="status">✅</span></li> <li>POCO M6 Pro → <span class="status">✅</span></li> <li>POCO C40 → <span class="status">⚠️</span></li> <li>POCO C55 → <span class="status">⚠️</span></li> <li>POCO C65 → <span class="status">⚠️</span></li> <!-- Redmi Series --> <li>Redmi 9 → <span class="status">⚠️</span></li> <li>Redmi 10 → <span class="status">✅</span></li> <li>Redmi 12 → <span class="status">✅</span></li> <li>Redmi 13 → <span class="status">✅</span></li> <li>Redmi 14C → <span class="status">✅</span></li> <li>Redmi Note 7 → <span class="status">⚠️</span></li> <li>Redmi Note 8 → <span class="status">⚠️</span></li> <li>Redmi Note 9 → <span class="status">✅</span></li> <li>Redmi Note 10 → <span class="status">✅</span></li> <li>Redmi Note 11 → <span class="status">✅</span></li> <li>Redmi Note 11 Pro → <span class="status">✅</span></li> <li>Redmi Note 11 Pro 5G → <span class="status">✅</span></li> <li>Redmi Note 12 → <span class="status">✅</span></li> <li>Redmi Note 12 Pro → <span class="status">✅</span></li> <li>Redmi Note 12 Pro+ → <span class="status">✅</span></li> <li>Redmi Note 13 → <span class="status">✅</span></li> <li>Redmi Note 13 Pro → <span class="status">✅</span></li> <li>Redmi Note 13 Pro+ → <span class="status">✅</span></li> <li>Redmi Note 14 → <span class="status">✅</span></li> <li>Redmi Note 14 Pro → <span class="status">✅</span></li> <li>Redmi Note 14 Pro Plus → <span class="status">✅</span></li> <li>Redmi Note 15 → <span class="status">✅</span></li> <li>Redmi Note 15 Pro → <span class="status">✅</span></li> <li>Redmi Note 15 Pro Plus → <span class="status">✅</span></li> <li>Redmi 15 → <span class="status">✅</span></li> <li>Redmi 15C → <span class="status">✅</span></li> <!-- PARTE 4: MOTOROLA MOTO G, EDGE, RAZR, E SERIES E IPHONE --> <!-- MOTOROLA MOTO G SERIES --> <li>Motorola Moto G (1ª Geração) → <span class="status">❌</span></li> <li>Motorola Moto G (2ª Geração) → <span class="status">❌</span></li> <li>Motorola Moto G (3ª Geração) → <span class="status">⚠️</span></li> <li>Motorola Moto G4 → <span class="status">⚠️</span></li> <li>Motorola Moto G5 → <span class="status">⚠️</span></li> <li>Motorola Moto G6 → <span class="status">✅</span></li> <li>Motorola Moto G7 → <span class="status">✅</span></li> <li>Motorola Moto G8 → <span class="status">✅</span></li> <li>Motorola Moto G9 → <span class="status">✅</span></li> <li>Motorola Moto G04 → <span class="status">⚠️</span></li> <li>Motorola Moto G05 → <span class="status">⚠️</span></li> <li>Motorola Moto G15 → <span class="status">✅</span></li> <li>Motorola Moto G12 → <span class="status">✅</span></li> <li>Motorola Moto G13 → <span class="status">✅</span></li> <li>Motorola Moto G20 → <span class="status">✅</span></li> <li>Motorola Moto G21 → <span class="status">✅</span></li> <li>Motorola Moto G22 → <span class="status">✅</span></li> <li>Motorola Moto G31 → <span class="status">✅</span></li> <li>Motorola Moto G34 → <span class="status">✅</span></li> <li>Motorola Moto G35 → <span class="status">✅</span></li> <li>Motorola Moto G36 → <span class="status">✅</span></li> <li>Motorola Moto G41 → <span class="status">✅</span></li> <li>Motorola Moto G42 → <span class="status">✅</span></li> <li>Motorola Moto G51 → <span class="status">✅</span></li> <li>Motorola Moto G52 → <span class="status">✅</span></li> <li>Motorola Moto G53 → <span class="status">✅</span></li> <li>Motorola Moto G54 → <span class="status">✅</span></li> <li>Motorola Moto G56 → <span class="status">✅</span></li> <li>Motorola Moto G71 → <span class="status">✅</span></li> <li>Motorola Moto G73 → <span class="status">✅</span></li> <li>Motorola Moto G82 → <span class="status">✅</span></li> <li>Motorola Moto G84 → <span class="status">✅</span></li> <li>Motorola Moto G86 → <span class="status">✅</span></li> <li>Motorola Moto G100 → <span class="status">✅</span></li> <li>Motorola Moto G200 → <span class="status">✅</span></li> <!-- MOTOROLA EDGE SERIES --> <li>Motorola Edge → <span class="status">✅</span></li> <li>Motorola Edge Plus → <span class="status">✅</span></li> <li>Motorola Edge 20 Lite → <span class="status">✅</span></li> <li>Motorola Edge 20 → <span class="status">✅</span></li> <li>Motorola Edge 20 Pro → <span class="status">✅</span></li> <li>Motorola Edge 30 Neo → <span class="status">✅</span></li> <li>Motorola Edge 30 Fusion → <span class="status">✅</span></li> <li>Motorola Edge 30 → <span class="status">✅</span></li> <li>Motorola Edge 30 Pro → <span class="status">✅</span></li> <li>Motorola Edge 30 Ultra → <span class="status">✅</span></li> <li>Motorola Edge 40 Neo → <span class="status">✅</span></li> <li>Motorola Edge 40 → <span class="status">✅</span></li> <li>Motorola Edge 40 Pro → <span class="status">✅</span></li> <li>Motorola Edge 40 Ultra → <span class="status">✅</span></li> <li>Motorola Edge 50 Pro → <span class="status">✅</span></li> <li>Motorola Edge 50 Ultra → <span class="status">✅</span></li> <li>Motorola Edge 60 → <span class="status">✅</span></li> <li>Motorola Edge 60 Pro → <span class="status">✅</span></li> <li>Motorola Edge 70 → <span class="status">✅</span></li> <li>Motorola Edge 70 Pro → <span class="status">✅</span></li> <!-- MOTOROLA RAZR SERIES --> <li>Motorola Razr (2019) → <span class="status">⚠️</span></li> <li>Motorola Razr 5G (2020) → <span class="status">✅</span></li> <li>Motorola Razr 40 → <span class="status">✅</span></li> <li>Motorola Razr 40 Ultra → <span class="status">✅</span></li> <li>Motorola Razr 50 → <span class="status">✅</span></li> <li>Motorola Razr 50 Ultra → <span class="status">✅</span></li> <li>Motorola Razr 60 → <span class="status">✅</span></li> <li>Motorola Razr 60 Ultra → <span class="status">✅</span></li> <!-- MOTOROLA MOTO E SERIES --> <li>Motorola Moto E6 → <span class="status">⚠️</span></li> <li>Motorola Moto E7 → <span class="status">⚠️</span></li> <li>Motorola Moto E13 → <span class="status">✅</span></li> <li>Motorola Moto E20 → <span class="status">✅</span></li> <li>Motorola Moto E22 → <span class="status">✅</span></li> <li>Motorola Moto E22i → <span class="status">✅</span></li> <li>Motorola Moto E30 → <span class="status">✅</span></li> <li>Motorola Moto E32 → <span class="status">✅</span></li> <li>Motorola Moto E40 → <span class="status">✅</span></li> <!-- APPLE IPHONE SERIES --> <li>Todos os modelos de iPhone → <span class="status">❌</span></li>> </ul> 
 
 <script>
-for(let i=0;i<60;i++){let s=document.createElement("div");s.className="star";s.style.width=s.style.height=Math.random()*3+"px";s.style.top=Math.random()*100+"%";s.style.left=Math.random()*100+"%";document.getElementById("starsMain").appendChild(s);}
-
-document.getElementById("toggleNotice").onclick=()=>document.getElementById("noticeBox").classList.toggle("show");
-document.getElementById("toggleInstall").onclick=()=>document.getElementById("installBox").classList.toggle("show");
-
-document.getElementById("searchBtn").onclick=()=>{
-let v=document.getElementById("searchInput").value.toLowerCase(),found=false;
-let ul=document.getElementById("compatList");
-document.querySelectorAll("#compatList li").forEach(li=>{
-li.classList.remove("highlight-result");
-if(li.innerText.toLowerCase().includes(v)){
-ul.prepend(li);
-li.classList.add("highlight-result");
-found=true;
+// Estrelas
+const starsMain = document.getElementById("starsMain");
+for(let i=0; i<80; i++){
+  let s = document.createElement("div");
+  s.className = "star";
+  s.style.width = s.style.height = Math.random() * 3 + "px";
+  s.style.top = Math.random() * 100 + "%";
+  s.style.left = Math.random() * 100 + "%";
+  s.style.animationDuration = (Math.random() * 2 + 1) + "s";
+  starsMain.appendChild(s);
 }
-});
-document.getElementById("notFound").style.display=found?"none":"block";
+
+// Botões
+document.getElementById("toggleNotice").onclick = () => document.getElementById("noticeBox").classList.toggle("show");
+document.getElementById("toggleInstall").onclick = () => document.getElementById("installBox").classList.toggle("show");
+
+// Busca
+document.getElementById("searchBtn").onclick = () => {
+  let val = document.getElementById("searchInput").value.toLowerCase();
+  let found = false;
+  let items = document.querySelectorAll("#compatList li");
+  
+  if(val.trim() === "") return;
+
+  items.forEach(li => {
+    li.classList.remove("highlight-result");
+    if(li.innerText.toLowerCase().includes(val)){
+      document.getElementById("compatList").prepend(li);
+      li.classList.add("highlight-result");
+      found = true;
+    }
+  });
+  
+  document.getElementById("notFound").style.display = found ? "none" : "block";
+  if(found) window.scrollTo({top: 300, behavior: 'smooth'});
 };
+
+document.getElementById("searchInput").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") document.getElementById("searchBtn").click();
+});
 </script>
 
 </body>
