@@ -175,7 +175,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 16px;
+            padding: 18px 16px;
             background: transparent;
             border: none;
             color: inherit;
@@ -183,6 +183,7 @@
             font-size: 1rem;
             font-weight: 600;
             text-align: left;
+            min-height: 56px; /* Melhor toque no mobile */
         }
 
         .acc-title { display: flex; align-items: center; gap: 14px; flex: 1; }
@@ -208,9 +209,9 @@
         }
 
         .inner {
-            padding: 0 16px 20px 62px;
+            padding: 0 16px 40px 62px;
             color: #d1e9ff;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .acc-item.open {
@@ -218,15 +219,23 @@
             background: rgba(0, 119, 255, 0.05);
         }
 
-        .acc-item.open .acc-body { max-height: 800px; } /* Aumentado para caber botões */
+        .acc-item.open .acc-body {
+            max-height: 3000px; /* Valor alto para evitar corte em conteúdos longos */
+        }
+
         .acc-item.open .acc-chevron { transform: rotate(180deg); opacity: 1; color: var(--accent-a); }
 
         footer { text-align: center; margin-top: 40px; opacity: 0.6; font-size: 0.85rem; padding-bottom: 20px; }
 
         @media (max-width: 600px) {
-            .inner { padding-left: 16px; }
-            h1 { font-size: 1.5rem; }
-            .wrap { padding: 15px; }
+            .wrap { padding: 15px; margin: 30px auto; }
+            .inner { 
+                padding: 0 16px 50px 16px; /* Remove indentação lateral no mobile */
+            }
+            .acc-bullet { width: 28px; height: 28px; font-size: 0.9rem; }
+            h4 { font-size: 1.1rem; margin: 20px 0 10px; }
+            ul { padding-left: 20px; margin: 10px 0; }
+            .acc-trigger { padding: 16px; }
         }
     </style>
 </head>
@@ -248,7 +257,7 @@
 
     <div class="wrap">
         <header>
-            <div class="logo"><img src="https://i.ibb.co/4nTyCFhk/image.png" alt="Logo"></div>
+            <div class="logo"><img src="https://i.ibb.co/W432cVzB/file-0000000061dc720e9ea07d16f09665ae.png" alt="Logo"></div>
             <h1>Suporte • Clash Royale Arcade Paradise</h1>
             <p>Toque em uma dúvida para ver a resposta.</p>
         </header>
@@ -286,10 +295,10 @@
 
                 <article class="acc-item" id="item-4">
                     <button class="acc-trigger" onclick="toggleAccordion('item-4')">
-                        <div class="acc-title"><div class="acc-bullet">4</div><span>Meu celular é compatível?</span></div>
+                        <div class="acc-title"><div class="acc-bullet">4</div><span>O jogo é compativel com o meu celular?</span></div>
                         <div class="acc-chevron">▾</div>
                     </button>
-                    <div class="acc-body"><div class="inner">Compatibilidade depende do processador. Verifique aqui:<br><br><a class="cta" href="https://spectrox-gg.github.io/SpectroX-Linck/Compatibilidade.html" target="_blank" style="padding: 8px 12px; font-size: 0.9rem;">Verificar Compatibilidade</a></div></div>
+                    <div class="acc-body"><div class="inner">Sim, o jogo funcionará em todos os dispositivos 32 e 64bit com exeção de iplone.</div></div>
                 </article>
 
                 <article class="acc-item" id="item-5">
@@ -301,11 +310,42 @@
                 </article>
 
                 <article class="acc-item" id="item-6">
-                    <button class="acc-trigger" onclick="toggleAccordion('item-6')">
-                        <div class="acc-title"><div class="acc-bullet">6</div><span>Como baixar e instalar o jogo?</span></div>
-                        <div class="acc-chevron">▾</div>
-                    </button>
-                    <div class="acc-body"> <div class="inner"> <ol> <li>Clique no link oficial ou cole o link no navegador.</li> <li>Ative o modo <strong>computador</strong>.</li> <li>Faça o download e instale o aplicativo.</li> <li> Se o Play Protect bloquear com <em>"App de risco bloqueado"</em>, toque em <strong>Mais detalhes</strong> e depois em <strong>Instalar mesmo assim</strong>. </li> <li> Caso apareça que o dispositivo é <strong>incompatível</strong>, consulte o <strong>tópico 4 deste site</strong>. </li> </ol> </div> </div> </article> 
+    <button class="acc-trigger" onclick="toggleAccordion('item-6')">
+        <div class="acc-title">
+            <div class="acc-bullet">6</div>
+            <span>Como jogar a nova versão do mod?</span>
+        </div>
+        <div class="acc-chevron">▾</div>
+    </button>
+    <div class="acc-body">
+        <div class="inner">
+            <p><strong>🚨 Nova versão liberada!</strong> Para acessar agora, escolha <strong>UMA</strong> das opções:</p>
+            
+            <h4>Opção 1 – Grátis</h4>
+            <ul>
+                <li>Chegar no <strong>nível 3</strong> no nosso Discord oficial</li>
+                <li>Link: <a href="https://discord.gg/teJ72wy3A" target="_blank" rel="noopener">https://discord.gg/teJ72wy3A</a></li>
+                <li>Dica: Converse bastante, participe de canais de voz, reaja a mensagens (sem spam ou flood para não ser punido). Leva alguns minutos ou poucas horas dependendo da atividade.</li>
+            </ul>
+
+            <p style="text-align: center; margin: 25px 0; font-weight: bold; font-size: 1.3em; color: #aaa;">OU</p>
+
+            <h4>Opção 2 – Turbine o servidor (acesso imediato + vantagens)</h4>
+            <ul>
+                <li>Faça <strong>Server Boost</strong> no Discord (clique direito no ícone do servidor → "Turbinar servidor")</li>
+                <li><strong>O que você ganha:</strong> Acesso antecipado do jogo + Você ajuda diretamente o projeto a crescer e melhorar!</li>
+            </ul>
+
+            <p style="margin: 20px 0;">
+                <em>Após atingir o nível 3 ou fazer o boost, o canal <strong>#download-link</strong> (ou similar) aparece automaticamente no Discord. Baixe ou atualize o mod lá.</em>
+            </p>
+
+            <p style="margin-top: 30px; color: #e74c3c; font-weight: bold; text-align: center; font-size: 1.1em;">
+                Alguma dúvida? Manda mensagem no Instagram ou no grupo Shadow Elite.<br>Bora jogar! 🔥
+            </p>
+        </div>
+    </div>
+</article>
 
                 <article class="acc-item" id="item-7">
                     <button class="acc-trigger" onclick="toggleAccordion('item-7')">
@@ -372,20 +412,35 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
         function toggleLangMenu() { document.getElementById('langMenu').classList.toggle('show'); }
-        function translatePage(lang) { window.location.href = `https://translate.google.com/translate?sl=pt&tl=${lang}&u=${encodeURIComponent(window.location.href)}`; }
+        function translatePage(lang) { window.location.href = `https://translate.google.com/translate?sl=pt&tl=\( {lang}&u= \){encodeURIComponent(window.location.href)}`; }
         window.onclick = function(e) { if (!e.target.matches('.lang-btn')) { const m = document.getElementById("langMenu"); if (m.classList.contains('show')) m.classList.remove('show'); } }
 
         function toggleAccordion(id) {
             const currentItem = document.getElementById(id);
             const isOpen = currentItem.classList.contains('open');
+            
+            // Fecha todos
             document.querySelectorAll('.acc-item').forEach(item => {
                 item.classList.remove('open');
+                const body = item.querySelector('.acc-body');
+                body.style.maxHeight = '0px';
                 item.querySelector('.acc-trigger').setAttribute('aria-expanded', 'false');
             });
+
             if (!isOpen) {
                 currentItem.classList.add('open');
                 currentItem.querySelector('.acc-trigger').setAttribute('aria-expanded', 'true');
-                setTimeout(() => { currentItem.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300);
+                
+                const body = currentItem.querySelector('.acc-body');
+                const inner = body.querySelector('.inner');
+                
+                // Calcula altura real do conteúdo + margem extra
+                body.style.maxHeight = inner.scrollHeight + 100 + 'px';
+                
+                // Scroll suave para centralizar o item (ótimo no mobile)
+                setTimeout(() => {
+                    currentItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
             }
         }
 
