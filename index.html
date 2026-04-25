@@ -157,7 +157,7 @@
   <p class="neon-warning">📌 Lembre-se de abrir o site em um navegador (Chrome, Edge, Opera, etc.)</p>
 
   <div id="verifyContainer" style="display:flex; flex-direction:column; gap:10px; align-items:center;">
-    <p style="font-size:0.9em; opacity:0.85; margin:0 0 6px 0;">Siga para continuar</p>
+    <p style="font-size:0.9em; opacity:0.85; margin:0 0 6px 0;">Não esqueça de seguir :)</p>
 
     <button id="tiktokBtn" style="width:180px; padding:10px; font-size:0.9em; border-radius:50px; background:linear-gradient(90deg,#25F4EE,#FF0050); color:white; border:none;">
       TikTok
@@ -257,10 +257,9 @@
   createStars('starsLoading');
   createStars('starsMain');
 
-  // ======== VARIÁVEIS ========
+  // ======== ELEMENTOS ========
   const instagramBtn = document.getElementById('instagramBtn');
   const tiktokBtn = document.getElementById('tiktokBtn');
-  const verifyText = document.getElementById('verifyText');
   const continueBtn = document.getElementById('continueBtn');
   const loadingScreen = document.getElementById('loadingScreen');
   const mainContent = document.getElementById('mainContent');
@@ -269,10 +268,7 @@
   const noticeBox = document.getElementById('noticeBox');
   let vibrateInterval = null;
 
-  let tiktokVerified = false;
-  let continueHandlerAdded = false;
-
-  // ======== FUNÇÕES DE VIBRAÇÃO / AVISO ========
+  // ======== VIBRAÇÃO ========
   function startVibrate() {
     if(!navigator.vibrate) return;
     toggleNotice.classList.add('vibrating');
@@ -290,7 +286,7 @@
     toggleNotice.classList.remove('vibrating');
   }
 
-  // ======== EVENTO BOTÃO DE AVISOS ========
+  // ======== AVISOS ========
   if(toggleNotice){
     toggleNotice.addEventListener('click', () => {
       stopVibrate();
@@ -299,63 +295,52 @@
     });
   }
 
-  // ======== VERIFICAÇÃO TIKTOK (3 segundos) ========
-  function startTikTokVerification(){
-    tiktokBtn.disabled = true;
+  // ======== REDES (AGORA SÓ ABREM) ========
+  tiktokBtn.addEventListener('click', ()=>{
     window.open('https://www.tiktok.com/@sr_spectro_?_t=ZM-90LwXpeS2AN&_r=1','_blank');
-
-    let timeLeft = 3;
-    verifyText.style.display = 'block';
-    verifyText.textContent = `Verificando TikTok... ${timeLeft}s`;
-
-    const timer = setInterval(()=>{
-      timeLeft--;
-      verifyText.textContent = `Verificando TikTok... ${timeLeft}s`;
-
-      if(timeLeft <= 0){
-        clearInterval(timer);
-        tiktokVerified = true;
-        tiktokBtn.classList.add('verified');
-        tiktokBtn.style.background = '#25D366';
-        tiktokBtn.style.borderColor = '#25D366';
-        verifyText.textContent = 'TikTok verificado ✅';
-        continueBtn.style.display = 'inline-block';
-        continueBtn.classList.add('enabled');
-        continueBtn.disabled = false;
-
-        if(!continueHandlerAdded){
-          continueHandlerAdded = true;
-          continueBtn.addEventListener('click', ()=> {
-            if(!tiktokVerified) return;
-            loadingScreen.style.transition = 'opacity 0.9s ease';
-            loadingScreen.style.opacity = 0;
-            setTimeout(()=>{
-              loadingScreen.style.display = 'none';
-              mainContent.style.display = 'flex';
-              startVibrate();
-            },900);
-          });
-        }
-      }
-    },1000);
-  }
+  });
 
   instagramBtn.addEventListener('click', ()=>{
     window.open('https://www.instagram.com/elinsberg_?igsh=Y2szcmR0MjJwY29u','_blank');
   });
-  tiktokBtn.addEventListener('click', startTikTokVerification);
 
-  // ======== BOTAO COMPARTILHAR ========
+  // ======== CONTINUAR (SEMPRE LIBERADO) ========
+  continueBtn.style.display = 'inline-block';
+  continueBtn.classList.add('enabled');
+  continueBtn.disabled = false;
+
+  continueBtn.addEventListener('click', ()=>{
+    loadingScreen.style.transition = 'opacity 0.9s ease';
+    loadingScreen.style.opacity = 0;
+    setTimeout(()=>{
+      loadingScreen.style.display = 'none';
+      mainContent.style.display = 'flex';
+      startVibrate();
+    },900);
+  });
+
+  // ======== COMPARTILHAR ========
   const shareBtn = document.getElementById('shareBtn');
   const siteUrl = "https://spectrox-gg.github.io/SpectroX-Linck/";
+
   if(shareBtn){
     shareBtn.addEventListener('click', async () => {
       if (navigator.share) {
-        try { await navigator.share({title:'SpectroX Links',text:'Confira os links oficiais do SpectroX!',url:siteUrl}); }
-        catch(err){ console.log('Erro ao compartilhar:',err); }
+        try {
+          await navigator.share({
+            title:'SpectroX Links',
+            text:'Confira os links oficiais do SpectroX!',
+            url:siteUrl
+          });
+        } catch(err){
+          console.log('Erro ao compartilhar:',err);
+        }
       } else {
-        navigator.clipboard.writeText(siteUrl).then(()=>{ alert('Link copiado para a área de transferência!'); })
-        .catch(()=>{ alert('Não foi possível copiar o link.'); });
+        navigator.clipboard.writeText(siteUrl).then(()=>{
+          alert('Link copiado para a área de transferência!');
+        }).catch(()=>{
+          alert('Não foi possível copiar o link.');
+        });
       }
     });
   }
@@ -363,15 +348,6 @@
   document.addEventListener('keydown', (e)=>{
     if(e.key === 'Escape'){
       if(document.activeElement) document.activeElement.blur();
-    }
-  });
-
-  window.addEventListener('focus', ()=>{
-    if(tiktokBtn.classList.contains('verified') && !tiktokVerified){
-      tiktokVerified = true;
-      continueBtn.style.display = 'inline-block';
-      continueBtn.classList.add('enabled');
-      continueBtn.disabled = false;
     }
   });
 </script>
